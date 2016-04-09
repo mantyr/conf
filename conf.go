@@ -47,7 +47,7 @@ func (c *ConfigList) LoadFile(file_name string) ConfigFile {
     return config_file
 }
 
-func (c ConfigList) GetFile(file_name string) ConfigFile {
+func (c *ConfigList) GetFile(file_name string) ConfigFile {
     return c.LoadFile(file_name)
 }
 
