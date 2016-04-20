@@ -93,7 +93,7 @@ func NewConfig() (c ConfigList) {
     c.d = make(map[string]ConfigFile)
 
     c.SetDefaultFile("properties")
-    c.SetDefaultCatalog("./configs")
+    c.SetDefaultCatalog(DirBin+"/configs")
     return c
 }
 

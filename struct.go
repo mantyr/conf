@@ -6,6 +6,10 @@ import (
 
 const Default_section string = "default"
 
+var (
+    DirBin string = "."
+)
+
 type ConfigList struct {
     sync.RWMutex
     d map[string]ConfigFile

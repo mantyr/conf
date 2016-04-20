@@ -24,7 +24,17 @@ func TestLoadFileDefault(t *testing.T) {
     }
 }
 
+func TestInitLoadFile(t *testing.T) {
+    SetDefaultFile("properties")
+//    SetDefaultCatalog("./testdata") // Set default dir ./configs/
+    LoadFile("storage")
 
+    section := GetSection("server_1", "storage")
+    val := section.Get("port")
+    if val != "1234_v2" {
+        t.Errorf("Error first section.Get() value, %q", val)
+    }
+}
 
 func TestLoadFile(t *testing.T) {
     conf := NewConfig()

@@ -19,6 +19,10 @@ func GetSection(key string, params ...string) ConfigSection {
     return config_list.GetSection(key, params...)
 }
 
+func LoadFile(file_name string) ConfigFile {
+    return config_list.LoadFile(file_name)
+}
+
 func GetFile(file_name string) ConfigFile {
     return config_list.GetFile(file_name)
 }

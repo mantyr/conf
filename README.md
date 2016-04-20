@@ -15,10 +15,16 @@ package main
 
 import (
     "github.com/mantyr/conf"
+    "flag"
 )
 
 func init() {
-    conf.SetDefaultCatalog("./testdata")
+    dir := flag.String("dir", "", "Directory of program")
+    flag.Parse()
+
+    conf.SetDirBin(*dir)                        // Set DirBin and SetDefaultCatalog(conf.DirBin+"/configs")
+    conf.SetDefaultCatalog("./testdata")        // Set custom DirConfig, no change conf.DirBin, default value conf.DirBin = "."
+
     conf.SetDefaultFile("properties")
 
     // preload files, not necessary
