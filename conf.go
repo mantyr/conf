@@ -51,6 +51,14 @@ func (c *ConfigList) GetFile(file_name string) ConfigFile {
     return c.LoadFile(file_name)
 }
 
+func (c *ConfigList) IsFile(file_name string) bool {
+    c.RLock()
+    if v, ok := c.d[file_name]; !ok || v.Error != nil {
+        return false
+    }
+    return true
+}
+
 func (c *ConfigList) Get(key string, params ...string) string {
     section   := Default_section
     file_name := c.default_file

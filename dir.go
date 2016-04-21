@@ -16,6 +16,7 @@ func SetDirBin(dir string) string {
         DirBin = dir
     }
 
+    SetDefaultCatalog(DirBin+"/configs")
     return DirBin
 }
 

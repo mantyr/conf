@@ -27,6 +27,10 @@ func GetFile(file_name string) ConfigFile {
     return config_list.GetFile(file_name)
 }
 
+func IsFile(file_name string) bool {
+    return config_list.IsFile(file_name)
+}
+
 
 
 func Get(key string, params ...string) string {
