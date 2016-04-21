@@ -15,6 +15,7 @@ package main
 
 import (
     "github.com/mantyr/conf"
+    "github.com/mantyr/conf/confdb"
     "flag"
 )
 
@@ -30,6 +31,9 @@ func init() {
     // preload files, not necessary
     conf.LoadFile("properties")
     conf.LoadFile("storage")
+
+    // connect to db "section \"default\"" from storage.ini
+    confdb.ConnectDB("default")
 }
 
 func main() {
@@ -51,6 +55,9 @@ func main() {
     ini_file := conf.GetFile("properties")
 
     ...
+
+    db := confdb.GetDB("default")
+    db  = confdb.GetDB() // alias for confdb.GetDB("default")
 }
 ```
 
