@@ -4,6 +4,9 @@ import (
     "strings"
 )
 
+// Examples:
+//  GetSection("key")
+//  GetSection("key", "file")
 func (c *ConfigList) GetSection(key string, params ...string) ConfigSection {
     file_name := c.default_file
     if len(params) > 0 {
@@ -59,6 +62,10 @@ func (c *ConfigList) IsFile(file_name string) bool {
     return true
 }
 
+// Examples:
+//  Get("key")
+//  Get("key", "section")
+//  Get("key", "section", "file")
 func (c *ConfigList) Get(key string, params ...string) string {
     section   := Default_section
     file_name := c.default_file

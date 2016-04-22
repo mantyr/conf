@@ -15,3 +15,7 @@ func (c *ConfigSection) Get(params ...string) string {
     return val
 }
 
+// No safe. Do not change the values if you do not believe that non-concurrent access
+func (c *ConfigSection) GetItems() map[string]string {
+    return c.d
+}

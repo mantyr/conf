@@ -15,6 +15,9 @@ func SetDefaultCatalog(name string) {
 }
 
 
+// Examples:
+//  GetSection("key")
+//  GetSection("key", "file")
 func GetSection(key string, params ...string) ConfigSection {
     return config_list.GetSection(key, params...)
 }
@@ -32,7 +35,10 @@ func IsFile(file_name string) bool {
 }
 
 
-
+// Examples:
+//  Get("key")
+//  Get("key", "section")
+//  Get("key", "section", "file")
 func Get(key string, params ...string) string {
     return config_list.Get(key, params...)
 }

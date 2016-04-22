@@ -20,6 +20,9 @@ func (c *ConfigFile) GetSection(key string) ConfigSection {
     return c.d[key]
 }
 
+// Examples:
+//  Get("key")
+//  Get("key", "section")
 func (c *ConfigFile) Get(key string, params ...string) string {
     section := Default_section
     if len(params) > 0 {
