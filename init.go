@@ -50,3 +50,11 @@ func GetInt(key string, params ...string) int {
 func GetInt64(key string, params ...string) int64 {
     return config_list.GetInt64(key, params...)
 }
+
+// Examples:
+//  Is("key")
+//  Is("key", "section")
+//  Is("key", "section", "file")
+func Is(key string, params ...string) bool {
+    return config_list.Is(key, params...)
+}
