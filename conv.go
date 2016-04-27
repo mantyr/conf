@@ -4,6 +4,9 @@ import (
     "strconv"
 )
 
+// Examples:
+//  GetInt("key")
+//  GetInt("key", "section")
 func (c *ConfigFile) GetInt(key string, params ...string) int {
     val := c.Get(key, params...)
 
@@ -14,6 +17,9 @@ func (c *ConfigFile) GetInt(key string, params ...string) int {
     return i
 }
 
+// Examples:
+//  GetInt64("key")
+//  GetInt64("key", "section")
 func (c *ConfigFile) GetInt64(key string, params ...string) int64 {
     val := c.Get(key, params...)
 
@@ -24,6 +30,10 @@ func (c *ConfigFile) GetInt64(key string, params ...string) int64 {
     return i
 }
 
+// Examples:
+//  GetInt("key")
+//  GetInt("key", "section")
+//  GetInt("key", "section", "file")
 func (c *ConfigList) GetInt(key string, params ...string) int {
     val := c.Get(key, params...)
 
@@ -34,6 +44,10 @@ func (c *ConfigList) GetInt(key string, params ...string) int {
     return i
 }
 
+// Examples:
+//  GetInt64("key")
+//  GetInt64("key", "section")
+//  GetInt64("key", "section", "file")
 func (c *ConfigList) GetInt64(key string, params ...string) int64 {
     val := c.Get(key, params...)
 
@@ -44,8 +58,11 @@ func (c *ConfigList) GetInt64(key string, params ...string) int64 {
     return i
 }
 
-func (c *ConfigSection) GetInt(key string) int {
-    val := c.Get(key)
+// Examples:
+//  GetInt("key")
+//  GetInt("key", "default_key")
+func (c *ConfigSection) GetInt(params ...string) int {
+    val := c.Get(params...)
 
     i, err := strconv.Atoi(val)
     if err != nil {
@@ -54,8 +71,11 @@ func (c *ConfigSection) GetInt(key string) int {
     return i
 }
 
-func (c *ConfigSection) GetInt64(key string) int64 {
-    val := c.Get(key)
+// Examples:
+//  GetInt64("key")
+//  GetInt64("key", "default_key")
+func (c *ConfigSection) GetInt64(params ...string) int64 {
+    val := c.Get(params...)
 
     i, err := strconv.ParseInt(val, 10, 64)
     if err != nil {
