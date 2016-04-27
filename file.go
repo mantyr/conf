@@ -16,14 +16,18 @@ func (c ConfigFile) addOption(section, name, value string) {
 
 
 
-func (c *ConfigFile) GetSection(key string) ConfigSection {
-    return c.d[key]
+func (c ConfigFile) GetSection(key string) ConfigSection {
+    v, ok := c.d[key]
+    if !ok {
+        return NewConfigSection()
+    }
+    return v
 }
 
 // Examples:
 //  Get("key")
 //  Get("key", "section")
-func (c *ConfigFile) Get(key string, params ...string) string {
+func (c ConfigFile) Get(key string, params ...string) string {
     section := Default_section
     if len(params) > 0 {
         section = params[0]

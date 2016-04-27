@@ -61,7 +61,7 @@ func (c *ConfigList) GetInt64(key string, params ...string) int64 {
 // Examples:
 //  GetInt("key")
 //  GetInt("key", "default_key")
-func (c *ConfigSection) GetInt(params ...string) int {
+func (c ConfigSection) GetInt(params ...string) int {
     val := c.Get(params...)
 
     i, err := strconv.Atoi(val)
@@ -74,7 +74,7 @@ func (c *ConfigSection) GetInt(params ...string) int {
 // Examples:
 //  GetInt64("key")
 //  GetInt64("key", "default_key")
-func (c *ConfigSection) GetInt64(params ...string) int64 {
+func (c ConfigSection) GetInt64(params ...string) int64 {
     val := c.Get(params...)
 
     i, err := strconv.ParseInt(val, 10, 64)
