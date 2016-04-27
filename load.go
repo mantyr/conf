@@ -64,6 +64,7 @@ func Reader(reader io.Reader) (c ConfigFile) {
                         i := strings.IndexAny(l, "=:")
                         option = strings.TrimSpace(l[0:i])
                         value := strings.TrimSpace(stripComments(l[i+1:]))
+                        value  = strings.Replace(value, `\#`, `#`, -1)
                         c.addOption(section, option, value)
 
                     default:
@@ -79,7 +80,7 @@ func Reader(reader io.Reader) (c ConfigFile) {
 
 func stripComments(l string) string {
     // comments are preceded by space or TAB
-    for _, c := range []string{" ;", "\t;", " #", "\t#"} {
+    for _, c := range []string{" ;", "\t;", " #", "\t#", " //", "\t//"} {
         if i := strings.Index(l, c); i != -1 {
             l = l[0:i]
         }

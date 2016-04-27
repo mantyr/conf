@@ -22,6 +22,18 @@ func TestLoadFileDefault(t *testing.T) {
     if val != "test_ok" {
         t.Errorf("Error revalue section, %q", val)
     }
+    val = conf.Get("pass", "server_2", "storage")
+    if val != "password2" {
+        t.Errorf("Error ignore comment, %q", val)
+    }
+    val = conf.Get("comment", "server_2", "storage")
+    if val != "comment / comment" {
+        t.Errorf("Error ignore comment, %q", val)
+    }
+    val = conf.Get("comment2", "server_2", "storage")
+    if val != "comment	/ comment" {
+        t.Errorf("Error ignore comment, %q", val)
+    }
 }
 
 func TestInitLoadFile(t *testing.T) {
@@ -127,6 +139,22 @@ func TestLoadFile(t *testing.T) {
     val_int64 = file.GetInt64("port", "server_1")
     if val_int != 1234 {
         t.Errorf("Error convert, int64, %q", val_int)
+    }
+}
+
+func TestIdValue(t *testing.T) {
+    SetDefaultFile("properties")
+    SetDefaultCatalog("./testdata")
+    LoadFile("storage")
+
+    section := GetSection("section_id")
+    val := section.Get("title")
+    if val != "#id_123 .title" {
+        t.Errorf("Error #id section.Get() value, %q", val)
+    }
+    val = section.Get("title2")
+    if val != "#id_234 .title" {
+        t.Errorf("Error #id section.Get() value, %q", val)
     }
 }
 
