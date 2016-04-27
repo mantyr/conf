@@ -7,7 +7,7 @@ import (
 // Examples:
 //  GetInt("key")
 //  GetInt("key", "section")
-func (c *ConfigFile) GetInt(key string, params ...string) int {
+func (c ConfigFile) GetInt(key string, params ...string) int {
     val := c.Get(key, params...)
 
     i, err := strconv.Atoi(val)
@@ -20,7 +20,7 @@ func (c *ConfigFile) GetInt(key string, params ...string) int {
 // Examples:
 //  GetInt64("key")
 //  GetInt64("key", "section")
-func (c *ConfigFile) GetInt64(key string, params ...string) int64 {
+func (c ConfigFile) GetInt64(key string, params ...string) int64 {
     val := c.Get(key, params...)
 
     i, err := strconv.ParseInt(val, 10, 64)

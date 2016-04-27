@@ -37,7 +37,7 @@ func (c *ConfigList) Is(key string, params ...string) bool {
 // Examples:
 //  Is("key")
 //  Is("key", "section")
-func (c *ConfigFile) Is(key string, params ...string) bool {
+func (c ConfigFile) Is(key string, params ...string) bool {
     section := Default_section
     if len(params) > 0 {
         section = params[0]
@@ -46,7 +46,7 @@ func (c *ConfigFile) Is(key string, params ...string) bool {
     return ok
 }
 
-func (c *ConfigSection) Is(key string) bool {
+func (c ConfigSection) Is(key string) bool {
     _, ok := c.d[key]
     return ok
 }
