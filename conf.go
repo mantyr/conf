@@ -57,8 +57,10 @@ func (c *ConfigList) GetFile(file_name string) ConfigFile {
 func (c *ConfigList) IsFile(file_name string) bool {
     c.RLock()
     if v, ok := c.d[file_name]; !ok || v.Error != nil {
+        c.RUnlock()
         return false
     }
+    c.RUnlock()
     return true
 }
 
