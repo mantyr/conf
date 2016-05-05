@@ -164,8 +164,12 @@ func TestUrlParamsValue(t *testing.T) {
     LoadFile("properties")
 
     section := GetSection("section_id")
-    val := section.Get("address")
+    val := section.Get("address1")
     if val != "http://example.com/page/details/offers.ashx?productId=5159" {
+        t.Errorf("Error ?attr=value section.Get() value, %q", val)
+    }
+    val = section.Get("address2")
+    if val != "http://example.com/page/details/offers.ashx?productId=5159#page=1" {
         t.Errorf("Error ?attr=value section.Get() value, %q", val)
     }
 }
