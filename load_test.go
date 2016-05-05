@@ -172,6 +172,14 @@ func TestUrlParamsValue(t *testing.T) {
     if val != "http://example.com/page/details/offers.ashx?productId=5159#page=1" {
         t.Errorf("Error ?attr=value section.Get() value, %q", val)
     }
+    val = section.Get("catalog/all/all/all/all/all/?np=200")
+    if val != "true" {
+        t.Errorf("Error '\\=' in key section.Get() value, %q", val)
+    }
+    val = section.Get("catalog/all/all/all/all/all/?np=200&test=123")
+    if val != "true2" {
+        t.Errorf("Error '\\=' in key section.Get() value, %q", val)
+    }
 }
 
 func BenchmarkLoad(b *testing.B) {

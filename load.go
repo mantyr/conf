@@ -58,11 +58,13 @@ func Reader(reader io.Reader) (c ConfigFile) {
                 c.addSection(section)
 
             default: // other alternatives
-                i := strings.IndexAny(l, "=:")
+                i := stripKey(l)
                 switch {
                     case i > 0: // option and value
-                        i := strings.IndexAny(l, "=:")
                         option = strings.TrimSpace(l[0:i])
+                        option = strings.Replace(option, `\=`, `=`, -1)
+                        option = strings.Replace(option, `\:`, `:`, -1)
+
                         value := strings.TrimSpace(stripComments(l[i+1:]))
                         value  = strings.Replace(value, `\#`, `#`, -1)
                         c.addOption(section, option, value)
@@ -76,6 +78,25 @@ func Reader(reader io.Reader) (c ConfigFile) {
         }
     }
     return c
+}
+
+func stripKey(l string) (i int) {
+    i = strings.IndexAny(l, "=:")
+    if i < 1 {
+        return i
+    }
+    ch := l[i-1]
+    if ch == '\\' {
+        ii := stripKey(l[i+1:])
+        if ii == -1 {
+            return ii
+        } else if ii == 0 {
+            return i+1
+        } else {
+            return i + ii + 1
+        }
+    }
+    return i
 }
 
 func stripComments(l string) string {
