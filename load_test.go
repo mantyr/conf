@@ -158,6 +158,18 @@ func TestIdValue(t *testing.T) {
     }
 }
 
+func TestUrlParamsValue(t *testing.T) {
+    SetDefaultFile("properties")
+    SetDefaultCatalog("./testdata")
+    LoadFile("properties")
+
+    section := GetSection("section_id")
+    val := section.Get("address")
+    if val != "http://example.com/page/details/offers.ashx?productId=5159" {
+        t.Errorf("Error ?attr=value section.Get() value, %q", val)
+    }
+}
+
 func BenchmarkLoad(b *testing.B) {
     conf := NewConfig()
     conf.SetDefaultFile("properties")
