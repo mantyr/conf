@@ -2,6 +2,7 @@ package conf
 
 import (
     "strconv"
+    "math/big"
 )
 
 // Examples:
@@ -28,6 +29,17 @@ func (c ConfigFile) GetInt64(key string, params ...string) int64 {
         return 0
     }
     return i
+}
+
+// Examples:
+//  GetBigRat("key")
+//  GetBigRat("key", "section")
+func (c *ConfigFile) GetBigRat(key string, params ...string) (r *big.Rat) {
+    val := c.Get(key, params...)
+
+    r = new(big.Rat)
+    r.SetString(val)
+    return
 }
 
 // Examples:
@@ -59,6 +71,18 @@ func (c *ConfigList) GetInt64(key string, params ...string) int64 {
 }
 
 // Examples:
+//  GetBigRat("key")
+//  GetBigRat("key", "section")
+//  GetBigRat("key", "section", "file")
+func (c *ConfigList) GetBigRat(key string, params ...string) (r *big.Rat) {
+    val := c.Get(key, params...)
+
+    r = new(big.Rat)
+    r.SetString(val)
+    return
+}
+
+// Examples:
 //  GetInt("key")
 //  GetInt("key", "default_key")
 func (c ConfigSection) GetInt(params ...string) int {
@@ -84,3 +108,13 @@ func (c ConfigSection) GetInt64(params ...string) int64 {
     return i
 }
 
+// Examples:
+//  GetBigRat("key")
+//  GetBigRat("key", "default_key")
+func (c *ConfigSection) GetBigRat(params ...string) (r *big.Rat) {
+    val := c.Get(params...)
+
+    r = new(big.Rat)
+    r.SetString(val)
+    return
+}

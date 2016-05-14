@@ -182,6 +182,29 @@ func TestUrlParamsValue(t *testing.T) {
     }
 }
 
+func TestBigRat(t *testing.T) {
+    SetDefaultFile("properties")
+    SetDefaultCatalog("./testdata")
+    LoadFile("money")
+
+    section := GetSection("money", "money")
+    val := section.GetBigRat("money1")
+    if val.FloatString(2) != "12.00" {
+        t.Errorf("Error Get big.Rat, %q", val.FloatString(2))
+    }
+
+    val = section.GetBigRat("money2")
+    if val.FloatString(2) != "0.00" {
+        t.Errorf("Error Get big.Rat, %q", val.FloatString(2))
+    }
+
+    val = section.GetBigRat("money3")
+    if val.FloatString(2) != "0.00" {
+        t.Errorf("Error Get big.Rat, %q", val.FloatString(2))
+    }
+}
+
+
 func BenchmarkLoad(b *testing.B) {
     conf := NewConfig()
     conf.SetDefaultFile("properties")
