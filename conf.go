@@ -68,15 +68,20 @@ func (c *ConfigList) IsFile(file_name string) bool {
 //  Get("key")
 //  Get("key", "section")
 //  Get("key", "section", "file")
+//  Get("key", "section", "file", "default_value")
 func (c *ConfigList) Get(key string, params ...string) string {
-    section   := Default_section
-    file_name := c.default_file
+    section       := Default_section
+    file_name     := c.default_file
+    default_value := ""
 
     if len(params) > 0 {
         section = params[0]
     }
     if len(params) > 1 {
         file_name = params[1]
+    }
+    if len(params) > 2 {
+        default_value = params[2]
     }
 
     c.RLock()
@@ -91,9 +96,17 @@ func (c *ConfigList) Get(key string, params ...string) string {
         c.d[file_name] = config_file
         c.Unlock()
 
-        return config_file.d[section].d[key]
+        val, ok := config_file.d[section].d[key]
+        if !ok || val == "" {
+            return default_value
+        }
+        return val
     }
-    return v.d[section].d[key]
+    val, ok := v.d[section].d[key]
+    if !ok || val == "" {
+        return default_value
+    }
+    return val
 }
 
 

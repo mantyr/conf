@@ -30,9 +30,13 @@ func TestLoadFileDefault(t *testing.T) {
     if val != "comment / comment" {
         t.Errorf("Error ignore comment, %q", val)
     }
-    val = conf.Get("comment2", "server_2", "storage")
+    val = conf.Get("comment2", "server_2", "storage", "default_value")
     if val != "comment	/ comment" {
         t.Errorf("Error ignore comment, %q", val)
+    }
+    val = conf.Get("default_value", "server_2", "storage", "default_ok")
+    if val != "default_ok" {
+        t.Errorf("Error default_value, %q", val)
     }
 }
 
