@@ -1,0 +1,8 @@
+{if ge .Page_max 2}
+    <ul class="pagination">
+    {range $link := .Links}
+            {if $link.IsType "..."}<li class='disabled'><a href='#'>...</a></li>{end}
+            {if $link.IsType "link"}<li{if $link.IsActive} class="active"{end}><a href="{$link.GetAddress}">{$link.GetPage}</a></li>{end}
+    {end}
+    </ul>
+{end}
