@@ -1,7 +1,6 @@
 package tmpl
 
 import (
-    "github.com/mantyr/conf"
     "github.com/mantyr/debug"
     "html/template"
     "net/http"
@@ -21,7 +20,7 @@ func RenderHTML(data interface{}, address string) (r template.HTML, err error) {
 
 func RenderString(data interface{}, address string) (r string, err error) {
     var t *template.Template
-    t, err = GetTemplate(conf.GetDirBin()+GetDir()+address)
+    t, err = GetTemplate(address)
     if err != nil {
         log.Printf("Bad template, %q\r\n", address)
         return
@@ -39,7 +38,7 @@ func RenderString(data interface{}, address string) (r string, err error) {
 }
 
 func Render(w http.ResponseWriter, data interface{}, address string) {
-    t, err := GetTemplate(conf.GetDirBin()+GetDir()+address)
+    t, err := GetTemplate(address)
     if err != nil {
         log.Printf("Bad template, %q\r\n", address)
         return
