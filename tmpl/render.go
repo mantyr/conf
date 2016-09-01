@@ -22,7 +22,7 @@ func RenderString(data interface{}, address string) (r string, err error) {
     var t *template.Template
     t, err = GetTemplate(address)
     if err != nil {
-        log.Printf("Bad template, %q\r\n", address)
+        log.Printf("Bad template, %q, %q\r\n", address, err)
         return
     }
     buf     := bytes.NewBuffer(nil)
@@ -40,7 +40,7 @@ func RenderString(data interface{}, address string) (r string, err error) {
 func Render(w http.ResponseWriter, data interface{}, address string) {
     t, err := GetTemplate(address)
     if err != nil {
-        log.Printf("Bad template, %q\r\n", address)
+        log.Printf("Bad template, %q, %q\r\n", address, err)
         return
     }
     t.Execute(w, data)
