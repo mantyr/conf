@@ -3,6 +3,7 @@ package conf
 import (
     "strconv"
     "math/big"
+    "time"
 )
 
 // Examples:
@@ -29,6 +30,13 @@ func (c ConfigFile) GetInt64(key string, params ...string) int64 {
         return 0
     }
     return i
+}
+
+// Examples:
+//  GetTimeDuration("key")
+//  GetTimeDuration("key", "section")
+func (c ConfigFile) GetTimeDuration(key string, params ...string) time.Duration {
+    return time.Duration(c.GetInt64(key, params...))
 }
 
 // Examples:
@@ -71,6 +79,14 @@ func (c *ConfigList) GetInt64(key string, params ...string) int64 {
 }
 
 // Examples:
+//  GetTimeDuration("key")
+//  GetTimeDuration("key", "section")
+//  GetTimeDuration("key", "section", "file")
+func (c *ConfigList) GetTimeDuration(key string, params ...string) time.Duration {
+    return time.Duration(c.GetInt64(key, params...))
+}
+
+// Examples:
 //  GetBigRat("key")
 //  GetBigRat("key", "section")
 //  GetBigRat("key", "section", "file")
@@ -106,6 +122,13 @@ func (c ConfigSection) GetInt64(params ...string) int64 {
         return 0
     }
     return i
+}
+
+// Examples:
+//  GetTimeDuration("key")
+//  GetTimeDuration("key", "default_key")
+func (c ConfigSection) GetTimeDuration(params ...string) time.Duration {
+    return time.Duration(c.GetInt64(params...))
 }
 
 // Examples:

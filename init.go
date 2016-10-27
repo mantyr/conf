@@ -1,5 +1,9 @@
 package conf
 
+import (
+    "time"
+)
+
 var config_list ConfigList
 
 func init() {
@@ -49,6 +53,10 @@ func GetInt(key string, params ...string) int {
 
 func GetInt64(key string, params ...string) int64 {
     return config_list.GetInt64(key, params...)
+}
+
+func GetTimeDuration(key string, params ...string) time.Duration {
+    return config_list.GetTimeDuration(key, params...)
 }
 
 // Examples:
