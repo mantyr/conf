@@ -9,6 +9,7 @@ import (
     "log"
     "fmt"
     "io/ioutil"
+    "strings"
 )
 
 func RenderHTML(data interface{}, address string) (r template.HTML, err error) {
@@ -62,10 +63,10 @@ func JsonString(w http.ResponseWriter, data string) {
     fmt.Fprintf(w, "%s\r\n", data)
 }
 
-func MessageError(w http.ResponseWriter, message string) {
+func MessageError(w http.ResponseWriter, message ...string) {
     w.Header().Set("Content-Type", "text/json; charset=utf-8")
     data := Json_error_data{
-        Message: message,
+        Message: strings.Join(message, " "),
         Status:  "Error",
     }
 
@@ -77,10 +78,10 @@ func MessageError(w http.ResponseWriter, message string) {
     fmt.Fprintf(w, "%s\r\n", b)
 }
 
-func MessageOK(w http.ResponseWriter, message string) {
+func MessageOK(w http.ResponseWriter, message ...string) {
     w.Header().Set("Content-Type", "text/json; charset=utf-8")
     data := Json_error_data{
-        Message: message,
+        Message: strings.Join(message, " "),
         Status:  "OK",
     }
 

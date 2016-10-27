@@ -15,6 +15,7 @@ var (
     funcMap template.FuncMap = template.FuncMap {
         "humanInt": HumanInt,
         "isStatus": IsStatus,
+        "json":     TMPL_json,
     }
 )
 
