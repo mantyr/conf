@@ -10,16 +10,16 @@ func TestIs(t *testing.T) {
 
     ok := conf.Is("title")
     if !ok {
-        t.Errorf("Error result Is(), %q", ok)
+        t.Errorf("Error result Is(), %t", ok)
     }
 
     ok = conf.Is("title_none")
     if ok {
-        t.Errorf("Error result Is(), %q", ok)
+        t.Errorf("Error result Is(), %t", ok)
     }
 
     ok = conf.Is("title_none")
     if ok {
-        t.Errorf("Error result Is(), %q", ok)
+        t.Errorf("Error result Is(), %t", ok)
     }
 }

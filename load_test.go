@@ -141,7 +141,7 @@ func TestLoadFile(t *testing.T) {
     }
 
     val_int64 = file.GetInt64("port", "server_1")
-    if val_int != 1234 {
+    if val_int64 != 1234 {
         t.Errorf("Error convert, int64, %q", val_int)
     }
 }

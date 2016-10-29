@@ -119,23 +119,20 @@ func (c *ConfigList) SetDefaultCatalog(name string) {
 }
 
 func NewConfig() (c ConfigList) {
-    c = ConfigList{}
     c.d = make(map[string]ConfigFile)
 
     c.SetDefaultFile("properties")
     c.SetDefaultCatalog(DirBin+"/configs")
-    return c
+    return
 }
 
 func NewConfigFile() (c ConfigFile) {
-    c = ConfigFile{}
     c.d = make(map[string]ConfigSection)
-    return c
+    return
 }
 
 func NewConfigSection() (c ConfigSection) {
-    c = ConfigSection{}
     c.d = make(map[string]string)
-    return c
+    return
 }
 
