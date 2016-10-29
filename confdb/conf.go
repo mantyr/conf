@@ -7,9 +7,8 @@ import (
 )
 
 func NewDBList() (d DbList) {
-    d = DbList{}
     d.d = make(map[string]*sql.DB)
-    return d
+    return
 }
 
 func (d *DbList) ConnectDB(params ...string) {
