@@ -1,9 +1,9 @@
 # Golang conf (ini file)
 
-[![Build Status]    (https://travis-ci.org/mantyr/conf.svg?branch=master)]      (https://travis-ci.org/mantyr/conf)
-[![GoDoc]           (https://godoc.org/github.com/mantyr/conf?status.png)]      (https://godoc.org/github.com/mantyr/conf)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)] (LICENSE.md)
-[![Go Report Card]  (https://goreportcard.com/badge/github.com/mantyr/conf)]    (https://goreportcard.com/report/github.com/mantyr/conf)
+[![Build Status](https://travis-ci.org/mantyr/conf.svg?branch=master)][build_status]
+[![GoDoc](https://godoc.org/github.com/mantyr/conf?status.png)][godoc]
+[![Go Report Card](https://goreportcard.com/badge/github.com/mantyr/conf)][goreport]
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 
 This stable version
 
@@ -69,3 +69,8 @@ func main() {
 [Oleg Shevelev][mantyr]
 
 [mantyr]: https://github.com/mantyr
+
+
+[build_status]: https://travis-ci.org/mantyr/conf
+[godoc]:        http://godoc.org/github.com/mantyr/conf
+[goreport]:     https://goreportcard.com/report/github.com/mantyr/conf

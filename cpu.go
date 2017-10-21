@@ -1,13 +1,13 @@
 package conf
 
 import (
-    "runtime"
+	"runtime"
 )
 
 func MinCPU(min_cpu int) {
-    cpu := runtime.NumCPU()
-    if min_cpu > cpu {
-        cpu = min_cpu
-    }
-    runtime.GOMAXPROCS(cpu)
+	cpu := runtime.NumCPU()
+	if min_cpu > cpu {
+		cpu = min_cpu
+	}
+	runtime.GOMAXPROCS(cpu)
 }

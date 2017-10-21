@@ -1,15 +1,15 @@
 package confdb
 
 import (
-    "sync"
-    "github.com/mantyr/database/sql"
+	"github.com/mantyr/database/sql"
+	"sync"
 )
 
 var (
-    Default_section string = "default"
+	Default_section string = "default"
 )
 
 type DbList struct {
-    sync.RWMutex
-    d map[string]*sql.DB
+	sync.RWMutex
+	d map[string]*sql.DB
 }
