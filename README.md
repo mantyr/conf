@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/mantyr/conf.svg?branch=master)][build_status]
 [![GoDoc](https://godoc.org/github.com/mantyr/conf?status.png)][godoc]
-[![Go Report Card](https://goreportcard.com/badge/github.com/mantyr/conf)][goreport]
+[![Go Report Card](https://goreportcard.com/badge/github.com/mantyr/conf?v=2)][goreport]
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 
 This stable version
